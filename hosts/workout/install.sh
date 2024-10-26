@@ -35,9 +35,9 @@ popd
 
 pushd /mnt/etc/nixos
 mv configuration.nix configuration.generated.nix
-ln -s ../../var/nixos-config/hosts/tyr/configuration.nix configuration.nix
-mv hardware-configuration.nix /mnt/var/nixos-config/hosts/tyr
-ln -s ../../var/nixos-config/hosts/tyr/hardware-configuration.nix hardware-configuration.nix
+ln -s ../../var/nixos-config/hosts/workout/configuration.nix configuration.nix
+mv hardware-configuration.nix /mnt/var/nixos-config/hosts/workout
+ln -s ../../var/nixos-config/hosts/workout/hardware-configuration.nix hardware-configuration.nix
 popd
 
 nixos-install --no-root-password
