@@ -40,4 +40,4 @@ mv hardware-configuration.nix /mnt/var/nixos-config/hosts/tyr
 ln -s ../../var/nixos-config/hosts/tyr/hardware-configuration.nix hardware-configuration.nix
 popd
 
-nixos-install --no-root-password --flake /mnt/var/nixos-config#tyr
+nixos-install --no-root-password
