@@ -22,7 +22,7 @@
   networking.defaultGateway  = "10.5.0.1";
   networking.nameservers  = [ "10.5.0.1" ];
   networking.interfaces.eth0.ipv4.addresses = [ {
-    address = "10.5.0.15";
+    address = "10.5.0.14";
     prefixLength = 16;
   } ];
 
