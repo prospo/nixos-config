@@ -26,6 +26,9 @@
     prefixLength = 16;
   } ];
 
+  # SSH
+  services.openssh.enable = true;
+
   # QEMU guest tools
   environment.systemPackages = [ pkgs.spice ];
   services.spice-vdagentd.enable = true;
@@ -38,6 +41,7 @@
   # Add a default user
   users.users.emil = {
     isNormalUser  = true;
+    initialPassword = "changeme";
     home  = "/home/emil";
     description  = "emil";
     extraGroups  = [ "wheel" "networkmanager" ];
