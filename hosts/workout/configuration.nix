@@ -12,14 +12,19 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "workout";
-
   time.timeZone = "Europe/Berlin";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
+  networking.hostName = "workout";
+  networking.defaultGateway  = "10.5.0.1";
+  networking.nameservers  = [ "10.5.0.1" ];
+  networking.interfaces.eth0.ipv4.addresses = [ {
+    address = "10.5.0.15";
+    prefixLength = 16;
+  } ];
 
   # QEMU guest tools
   environment.systemPackages = [ pkgs.spice ];
@@ -29,6 +34,15 @@
 
   # Run unpatched dynamic binaries on NixOS
   programs.nix-ld.enable = true;
+
+  # Add a default user
+  users.users.emil = {
+    isNormalUser  = true;
+    home  = "/home/emil";
+    description  = "emil";
+    extraGroups  = [ "wheel" "networkmanager" ];
+    openssh.authorizedKeys.keys  = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICUvldrwH+VVVUu+mdmvpbUlQzRIkT7C4PcSEwDQQQml emil@local" ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
